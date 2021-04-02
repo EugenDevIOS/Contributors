@@ -10,6 +10,7 @@ import Alamofire
 
 
 class NetworkingService {
+    static var sharedInstance = NetworkingService()
     
     func fetchRequest(completion: @escaping ([Contributors]?, Error?) -> Void) {
         

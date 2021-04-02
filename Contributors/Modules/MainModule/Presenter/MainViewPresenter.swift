@@ -9,17 +9,15 @@ import Foundation
 
 
 protocol MainViewPresenterProtocol: class {
-    func finishingFetchContributors(contributors: [Contributors])
+    func finishingFetchContributors()
 }
 
 class MainViewPresenter {
     
-    private let networkingService: NetworkingService
+    public var contributors: [Contributors] = []
+    
     weak private var mainViewPresenterProtocol: MainViewPresenterProtocol?
     
-    internal init(networkingService: NetworkingService) {
-        self.networkingService = networkingService
-    }
     
     func setViewDelegate(mainViewPresenterProtocol: MainViewPresenterProtocol?) {
         self.mainViewPresenterProtocol = mainViewPresenterProtocol
@@ -27,9 +25,10 @@ class MainViewPresenter {
     
     func getContributors() {
         
-        networkingService.fetchRequest { data, error in
+        NetworkingService.sharedInstance.fetchRequest { data, error in
             guard let contributors = data, error == nil else { return }
-            self.mainViewPresenterProtocol?.finishingFetchContributors(contributors: contributors)
+            self.contributors = contributors
+            self.mainViewPresenterProtocol?.finishingFetchContributors()
         }
     }
 }

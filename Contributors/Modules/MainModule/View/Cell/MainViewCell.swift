@@ -12,9 +12,9 @@ class MainViewCell: UITableViewCell {
     
     static let kCellIdentifire = "MainViewCell"
 
-    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet public weak var avatarImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet public weak var idLabel: UILabel!
     
     func setCell(contributors: Contributors) {
         
@@ -31,7 +31,10 @@ class MainViewCell: UITableViewCell {
         }
         
         if let avatarUrl = contributors.avatarUrl {
-            let resourceImage = ImageResource(downloadURL: URL(string: avatarUrl)!, cacheKey: avatarUrl)
+            guard let url = URL(string: avatarUrl) else {
+                return
+            }
+            let resourceImage = ImageResource(downloadURL: url, cacheKey: avatarUrl)
             self.avatarImage.kf.setImage(with: resourceImage)
         }
     }

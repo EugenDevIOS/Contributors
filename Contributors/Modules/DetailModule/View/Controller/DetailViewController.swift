@@ -28,6 +28,5 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
     
     @IBAction func closeTapped() {
         self.dismiss(animated: true, completion: nil)
-        
     }
 }

@@ -15,9 +15,7 @@ protocol MainViewPresenterProtocol: class {
 class MainViewPresenter {
     
     public var contributors: [Contributors] = []
-    
     weak private var mainViewPresenterProtocol: MainViewPresenterProtocol?
-    
     
     func setViewDelegate(mainViewPresenterProtocol: MainViewPresenterProtocol?) {
         self.mainViewPresenterProtocol = mainViewPresenterProtocol

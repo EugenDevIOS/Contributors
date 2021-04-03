@@ -160,6 +160,7 @@
 		9F67FDAA26167BC900DB7B0D /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				9F67FE552619012F00DB7B0D /* Animation */,
 				9F67FDA826167BB700DB7B0D /* NetworkLayer */,
 			);
 			path = Service;
@@ -169,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				9F67FD9126167A7A00DB7B0D /* MainViewController.swift */,
-				9F67FDC92617478800DB7B0D /* Animator.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -222,6 +222,14 @@
 				9F67FD7D26167A4600DB7B0D /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		9F67FE552619012F00DB7B0D /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				9F67FDC92617478800DB7B0D /* Animator.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		AD485B73F785CDC9D9E68714 /* Frameworks */ = {

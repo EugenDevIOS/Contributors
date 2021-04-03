@@ -39,7 +39,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="cyU-i6-Aq6"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -48,7 +48,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="qp1-xg-mc5"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -67,8 +67,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImage" destination="tk2-tR-b7Y" id="Dhw-Gy-RIO"/>
-                                            <outlet property="idLabel" destination="1Kv-yQ-gsv" id="0ix-oS-xpG"/>
-                                            <outlet property="titleLabel" destination="Rd3-Qx-FcK" id="tjT-Oq-7ca"/>
+                                            <outlet property="idLabel" destination="Rd3-Qx-FcK" id="LgM-Rc-wml"/>
+                                            <outlet property="titleLabel" destination="1Kv-yQ-gsv" id="rKn-3z-SxU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -117,12 +117,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNf-eO-GfT">
-                                <rect key="frame" x="20" y="44" width="60" height="30"/>
+                                <rect key="frame" x="20" y="60" width="128" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="1yB-BS-Tgj"/>
-                                    <constraint firstAttribute="height" constant="30" id="sTU-gv-VUN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="4WF-lS-SmR"/>
+                                    <constraint firstAttribute="height" constant="30" id="UU5-ps-UHp"/>
                                 </constraints>
-                                <state key="normal" title="Закрыть"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Contributors"/>
                                 <connections>
                                     <action selector="closeTapped" destination="0X9-4o-Gpw" eventType="touchUpInside" id="2dE-mL-tOX"/>
                                 </connections>
@@ -131,10 +132,11 @@
                         <viewLayoutGuide key="safeArea" id="D1w-Cx-4oj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="D1w-Cx-4oj" firstAttribute="trailing" secondItem="mNf-eO-GfT" secondAttribute="trailing" constant="266" id="04F-Sd-27a"/>
                             <constraint firstItem="Uki-ZY-1P1" firstAttribute="centerY" secondItem="yee-5c-xx8" secondAttribute="centerY" id="R42-Q4-fh8"/>
-                            <constraint firstItem="mNf-eO-GfT" firstAttribute="top" secondItem="D1w-Cx-4oj" secondAttribute="top" id="Zk1-At-dYX"/>
+                            <constraint firstItem="mNf-eO-GfT" firstAttribute="leading" secondItem="D1w-Cx-4oj" secondAttribute="leading" constant="20" id="Vl8-SA-x7y"/>
+                            <constraint firstItem="mNf-eO-GfT" firstAttribute="top" secondItem="D1w-Cx-4oj" secondAttribute="top" constant="16" id="ZpI-Wc-1d3"/>
                             <constraint firstItem="jlk-CX-SKI" firstAttribute="top" secondItem="Uki-ZY-1P1" secondAttribute="bottom" constant="65" id="bFP-Ll-FO7"/>
-                            <constraint firstItem="mNf-eO-GfT" firstAttribute="leading" secondItem="D1w-Cx-4oj" secondAttribute="leading" constant="20" id="eV2-SG-As0"/>
                             <constraint firstItem="jlk-CX-SKI" firstAttribute="centerX" secondItem="yee-5c-xx8" secondAttribute="centerX" id="vN7-IW-Nll"/>
                             <constraint firstItem="Uki-ZY-1P1" firstAttribute="centerX" secondItem="yee-5c-xx8" secondAttribute="centerX" id="wuV-lY-9lT"/>
                         </constraints>
@@ -146,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9w-Tf-mRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-281" y="770"/>
+            <point key="canvasLocation" x="1577" y="80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3mX-Cm-bKm">

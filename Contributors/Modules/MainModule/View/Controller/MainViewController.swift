@@ -12,13 +12,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let presenter = MainViewPresenter()
-    
+    private var animator: Animator?
     private var detailViewController: DetailViewController?
     public var selectedCell: MainViewCell?
     public var selectedCellImageViewSnapshot: UIView?
     
-    var animator: Animator?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.setViewDelegate(mainViewPresenterProtocol: self)
@@ -31,9 +29,6 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
     }
-    
-
-    
 }
 
 extension MainViewController: UITableViewDataSource{
@@ -44,7 +39,7 @@ extension MainViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainViewCell.kCellIdentifire, for: indexPath) as? MainViewCell else { return UITableViewCell()}
         let contributor = presenter.contributors[indexPath.row]
-        cell.setCell(contributors: contributor)
+        cell.setCell(contributor: contributor)
         return cell
     }
 }
@@ -62,8 +57,7 @@ extension MainViewController: UITableViewDelegate {
         self.detailViewController?.modalPresentationStyle = .fullScreen
         
         
-        guard let vc = self.detailViewController else { return }
-        self.present(vc, animated: true, completion: nil)
+        self.present(detailViewController, animated: true, completion: nil)
     }
 }
 
@@ -75,27 +69,25 @@ extension MainViewController: MainViewPresenterProtocol{
 
 extension MainViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // B2 - 16
+        
         guard let nvc = presenting as? UINavigationController,
               let firstViewController = nvc.viewControllers[0] as? MainViewController,
-            let secondViewController = presented as? DetailViewController,
-            let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
-            else { return nil }
-
+              let secondViewController = presented as? DetailViewController,
+              let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
+        else { return nil }
+        
         animator = Animator(type: .present, firstViewController: firstViewController, secondViewController: secondViewController, selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
         return animator
     }
-
-    // B1 - 3
+    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // B2 - 17
+        
         guard let secondViewController = dismissed as? DetailViewController,
-            let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
-            else { return nil }
-
+              let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
+        else { return nil }
+        
         animator = Animator(type: .dismiss, firstViewController: self, secondViewController: secondViewController, selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
         return animator
         
     }
-    
 }

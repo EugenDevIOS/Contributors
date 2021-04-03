@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol DetailViewPresenterProtocol: class {
-    
-}
 
 class DetailViewPresenter {
     

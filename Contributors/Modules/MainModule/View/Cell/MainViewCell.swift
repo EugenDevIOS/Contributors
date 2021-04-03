@@ -11,33 +11,19 @@ import Kingfisher
 class MainViewCell: UITableViewCell {
     
     static let kCellIdentifire = "MainViewCell"
-
+    
     @IBOutlet public weak var avatarImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet public weak var idLabel: UILabel!
     
     
     
-    func setCell(contributors: Contributors) {
+    func setCell(contributor: Contributors) {
         
-        if let login = contributors.login{
-            titleLabel.text = login
-        } else {
-            titleLabel.text = ""
-        }
-        
-        if let id = contributors.id{
-            idLabel.text = String(id)
-        } else {
-            idLabel.text = "Empty"
-        }
-        
-        if let avatarUrl = contributors.avatarUrl {
-            guard let url = URL(string: avatarUrl) else {
-                return
-            }
-            let resourceImage = ImageResource(downloadURL: url, cacheKey: avatarUrl)
-            self.avatarImage.kf.setImage(with: resourceImage)
-        }
+        guard let avatarUrl = contributor.avatarUrl, let url = URL(string: avatarUrl), let id = contributor.id else { return }
+        titleLabel.text = contributor.login
+        idLabel.text = String(id)
+        let resourceImage = ImageResource(downloadURL: url, cacheKey: avatarUrl)
+        self.avatarImage.kf.setImage(with: resourceImage)
     }
 }

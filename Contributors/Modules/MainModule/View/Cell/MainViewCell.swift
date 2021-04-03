@@ -16,6 +16,8 @@ class MainViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet public weak var idLabel: UILabel!
     
+    
+    
     func setCell(contributors: Contributors) {
         
         if let login = contributors.login{

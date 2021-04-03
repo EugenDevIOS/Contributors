@@ -64,8 +64,7 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             let window = firstViewController.view.window ?? secondViewController.view.window,
             let cellImageSnapshot = selectedCell.avatarImage.snapshotView(afterScreenUpdates: true),
             let cellLabelSnapshot = selectedCell.titleLabel.snapshotView(afterScreenUpdates: true),
-            let controllerImageSnapshot = secondViewController.avatarImage.snapshotView(afterScreenUpdates: true),
-            let closeButtonSnapshot = secondViewController.loginLabel.snapshotView(afterScreenUpdates: true) // 53
+            let controllerImageSnapshot = secondViewController.avatarImage.snapshotView(afterScreenUpdates: true)
         else {
             transitionContext.completeTransition(true)
             return
@@ -98,12 +97,13 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         // 42
         // 48
         // 54
-        [backgroundView, selectedCellImageViewSnapshot, controllerImageSnapshot, closeButtonSnapshot].forEach { containerView.addSubview($0) }
+        [backgroundView, selectedCellImageViewSnapshot, controllerImageSnapshot].forEach { containerView.addSubview($0) }
         
         // 25
         let controllerImageViewRect = secondViewController.avatarImage.convert(secondViewController.avatarImage.bounds, to: window)
         // 49
         let controllerLabelRect = secondViewController.loginLabel.convert(secondViewController.loginLabel.bounds, to: window)
+        
         
         
         
@@ -128,7 +128,7 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         
         // 56
-        closeButtonSnapshot.alpha = isPresenting ? 0 : 1
+        
         
         // 27
         UIView.animateKeyframes(withDuration: Self.duration, delay: 0, options: .calculationModeCubic, animations: {
@@ -156,29 +156,24 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
                 controllerImageSnapshot.alpha = isPresenting ? 1 : 0
             }
             
-            // 57
-            UIView.addKeyframe(withRelativeStartTime: isPresenting ? 0.7 : 0, relativeDuration: 0.3) {
-                closeButtonSnapshot.alpha = isPresenting ? 1 : 0
-            }
         }, completion: { _ in
             // 29
             self.selectedCellImageViewSnapshot.removeFromSuperview()
             controllerImageSnapshot.removeFromSuperview()
-            
             // 44
             backgroundView.removeFromSuperview()
             // 52
             cellLabelSnapshot.removeFromSuperview()
             // 58
-            
-            closeButtonSnapshot.removeFromSuperview()
-            
             // 30
             toView.alpha = 1
+            
+            
             
             // 31
             transitionContext.completeTransition(true)
         })
+        
     }
 }
 

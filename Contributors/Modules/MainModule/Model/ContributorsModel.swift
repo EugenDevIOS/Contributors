@@ -7,30 +7,7 @@
 
 import Foundation
 
-/*
- "login":"jbkempf",
- "id":9219282,
- "node_id":"MDQ6VXNlcjkyMTkyODI=",
- "avatar_url":"https://avatars.githubusercontent.com/u/9219282?v=4",
- "gravatar_id":"",
- "url":"https://api.github.com/users/jbkempf",
- "html_url":"https://github.com/jbkempf",
- "followers_url":"https://api.github.com/users/jbkempf/followers",
- "following_url":"https://api.github.com/users/jbkempf/following{/other_user}",
- "gists_url":"https://api.github.com/users/jbkempf/gists{/gist_id}",
- "starred_url":"https://api.github.com/users/jbkempf/starred{/owner}{/repo}",
- "subscriptions_url":"https://api.github.com/users/jbkempf/subscriptions",
- "organizations_url":"https://api.github.com/users/jbkempf/orgs",
- "repos_url":"https://api.github.com/users/jbkempf/repos",
- "events_url":"https://api.github.com/users/jbkempf/events{/privacy}",
- "received_events_url":"https://api.github.com/users/jbkempf/received_events",
- "type":"User",
- "site_admin":false,
- "contributions":7040
- 
- 
- 
- */
+
 
 struct Contributors: Codable {
     
